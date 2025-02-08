@@ -363,7 +363,10 @@
             </div>
         </div>
     </footer>
-
+    <div class="loader-container">
+        <div class="loader"></div>
+        <div class="count">0%</div>
+    </div>
     <script>
         (function () {
             // selectors
@@ -444,6 +447,22 @@
         }
         window.onload = checkDevice;
         window.onresize = checkDevice;
+
+        let count = 0;
+        const countElement = document.querySelector('.count');
+
+        function updateLoader() {
+            if (count < 100) {
+                count++;
+                countElement.textContent = `${count}%`;
+                setTimeout(updateLoader, 40);
+            } else {
+                countElement.textContent = "Loaded!";
+                document.querySelector('.loader-container').remove()
+            }
+        }
+
+        updateLoader();
     </script>
 
 </body>
