@@ -72,8 +72,9 @@
                         <img src="./assets/img/vibbevital.png" alt="">
                         <div class="openLinks">
                             <a href="/"><img src="./assets/img/open-link.svg" alt=""></a>
-                            <a href="./assets/img/vibbevital.png" data-fancybox><img src="./assets/img/view-image.svg"
-                                    alt=""></a>
+                            <a href="./assets/img/vibbevital.png" data-fancybox>
+                                <img src="./assets/img/view-image.svg" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -137,7 +138,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="items hideBox">
+                <div class="items">
                     <div class="imgbox">
                         <img src="./assets/img/work6.png" alt="">
                         <div class="openLinks">
@@ -149,7 +150,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="items hideBox">
+                <div class="items">
                     <div class="imgbox">
                         <img src="./assets/img/etincelle.png" alt="">
                         <div class="openLinks">
@@ -161,7 +162,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="items hideBox">
+                <div class="items">
                     <div class="imgbox">
                         <img src="./assets/img/Internet-Services.png" alt="">
                         <div class="openLinks">
@@ -173,7 +174,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="items hideBox">
+                <div class="items">
                     <div class="imgbox">
                         <img src="./assets/img/vibevital.png" alt="">
                         <div class="openLinks">
@@ -185,7 +186,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="items hideBox">
+                <div class="items">
                     <div class="imgbox">
                         <img src="./assets/img/work1.png" alt="">
                         <div class="openLinks">
@@ -197,7 +198,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="items hideBox">
+                <div class="items">
                     <div class="imgbox">
                         <img src="./assets/img/work3.png" alt="">
                         <div class="openLinks">
@@ -383,26 +384,27 @@
             var itemLength = document.querySelectorAll(".design-list .items");
             var viewAllButton = document.querySelector(".addButton")
             var viewButton = document.querySelector(".addButton a")
-            var addItem = 6;
+            const itemsPerLoad = 6;
+            let currentIndex = 0;
 
-            if (itemLength.length < addItem) {
-                viewAllButton.classList.remove("showBtn")
-            } else {
-                viewAllButton.classList.add("showBtn")
-            }
-            for (let item of itemLength) {
-                viewButton.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    console.log(item);
-
-                    if (itemLength.length < addItem) {
-                        item.classList.add("hideBox")
-                    } else {
-                        item.classList.remove("hideBox")
-                        viewAllButton.classList.remove("showBtn")
+            function displayItems(startIndex, endIndex) {
+                for(let i = startIndex; i < endIndex; i++){
+                    console.log(itemLength[i])
+                    if(itemLength){
+                        itemLength[i].style.display = "block";
                     }
-                })
+                }
             }
+            displayItems(currentIndex, itemsPerLoad);
+            currentIndex += itemsPerLoad;
+            viewButton.addEventListener('click', (e) => {
+                e.preventDefault()
+                displayItems(currentIndex, currentIndex + itemsPerLoad);
+                currentIndex += itemsPerLoad;
+                if (currentIndex >= itemLength.length) {
+                    viewAllButton.style.display = 'none';
+                }
+            });
 
             // function
             function StickyFun() {

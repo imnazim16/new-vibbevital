@@ -848,12 +848,11 @@ footer.footer-hide, footer.hide-ft{
     font-size: 1rem;
     list-style: inside;
 }
-.design-list .items.hideBox{
+.design-list .items{
     display: none;
 }
 .addButton {
     padding-top:2rem;
-    display: none;
 }
 .addButton a{
     background-color: var(--body-bg-color);
