@@ -579,13 +579,13 @@
                     <div class="ft-col-1">
                         <div class="company-info">
                             <div class="ft-title">Our phone number</div>
-                            <a href="tel:+91 9717220696">+91 9717220696</a>
+                            <a href="tel:+91 9717099980">+91 9717099980</a>
                         </div>
                         <div class="company-info">
                             <div class="ft-title">Our email address</div>
                             <a href="mailto:info@vibbevital.com">info@vibbevital.com</a>
                         </div>
-                        <div class="copy">All rights reserved © 2024 VibbeVital</div>
+                        <div class="copy">All rights reserved © <span id="year"></span> VibbeVital</div>
                     </div>
                 </div>
             </div>
@@ -611,6 +611,11 @@
             var bodyHeight = document.querySelector("body");
             var footerHgt = document.querySelector("footer");
             var minsHgt = bodyHeight.offsetHeight - 900 - footerHgt.offsetHeight;
+
+            var yearId = document.getElementById("year")
+            var date = new Date()
+            var year = date.getFullYear()
+            yearId.innerHTML = year
 
             var itemLength = document.querySelectorAll(".design-list .items");
             var viewAllButton = document.querySelector(".addButton")
